@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -14,11 +13,26 @@ double subtract(double a, double b) {
     return a - b;
 }
 
+// 乘法
+double multiply(double a, double b) {
+    return a * b;
+}
+
+// 除法
+double divide(double a, double b) {
+    if (b == 0) {
+        throw std::invalid_argument("除数不能为 0");
+    }
+    return a / b;
+}
+
 // 解析并计算表达式（当前分支只支持 + 和 -）
 double evaluate(double a, char op, double b) {
     switch (op) {
         case '+': return add(a, b);
         case '-': return subtract(a, b);
+        case '*': return multiply(a, b);
+        case '/': return divide(a, b);
         default:
             throw std::invalid_argument(std::string("不支持的运算符: ") + op);
     }
